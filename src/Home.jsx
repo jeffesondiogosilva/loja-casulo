@@ -8,6 +8,8 @@ function Home() {
     
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+
+          <p>Catálogo</p>
           {/* <a
             className="App-link"
             href="https://reactjs.org"

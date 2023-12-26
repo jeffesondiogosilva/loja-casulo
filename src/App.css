@@ -44,13 +44,14 @@
 }
 
 html{
-  background-color:#878E41;
+  background-color:#fff;
   text-align: center;
 
 }
 
 .catalog{
   text-align:left;
+  background-color: #878E41;
 }
 
 .produto{  
@@ -66,11 +67,12 @@ html{
 
 .painel-adm{    
     text-align: center;
+    background-color: white;
+    color: grey;
 }
 
 .form-produto{  
   background-color: white;
-  color: black;
   padding: 2px;
   width: 50%;
 }
@@ -116,7 +118,7 @@ html{
 }
 
 button[type="submit"] {
-  background-color: #007bff;
+  background-color: grey;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -126,7 +128,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: grey;
 }
 
 title-painel{
