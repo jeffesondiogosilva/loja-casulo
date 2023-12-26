@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a73cb52b.css",
+    "main.js": "/static/js/main.eb3c4a00.js",
+    "static/js/787.ba33194b.chunk.js": "/static/js/787.ba33194b.chunk.js",
+    "static/media/WhatsApp_Image_2023-12-24_at_15.19.50-removebg-preview.png": "/static/media/WhatsApp_Image_2023-12-24_at_15.19.50-removebg-preview.e23edf648e09dfb735f0.png",
+    "static/media/vestido.jpg": "/static/media/vestido.b5606ba8dd03364a0bb6.jpg",
+    "index.html": "/index.html",
+    "main.a73cb52b.css.map": "/static/css/main.a73cb52b.css.map",
+    "main.eb3c4a00.js.map": "/static/js/main.eb3c4a00.js.map",
+    "787.ba33194b.chunk.js.map": "/static/js/787.ba33194b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a73cb52b.css",
+    "static/js/main.eb3c4a00.js"
+  ]
+}
