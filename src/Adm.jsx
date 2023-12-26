@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ProductForm from './ProductForm';
+import List from './List';
 
 function Adm() {
   return (
@@ -10,7 +11,10 @@ function Adm() {
 
       <ProductForm />
 
-    
+      <hr />
+
+      <List />
+
     </div>
   );
 }

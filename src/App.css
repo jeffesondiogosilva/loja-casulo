@@ -134,3 +134,33 @@ button[type="submit"]:hover {
 title-painel{
   color: #fff !important;
 }
+
+/* ListaCMS.css */
+.lista-cms {
+  max-width: 800px;
+  margin: auto;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
