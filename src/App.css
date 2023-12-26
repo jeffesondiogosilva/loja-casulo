@@ -140,6 +140,7 @@ title-painel{
   max-width: 800px;
   margin: auto;
   overflow-x: auto;
+  padding: 50px;
 }
 
 table {
