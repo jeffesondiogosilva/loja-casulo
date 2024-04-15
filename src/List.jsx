@@ -1,37 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import firebase from 'firebase/compat/app'; // Corrigido o caminho de importação para o Firebase
+import 'firebase/compat/firestore'; // Corrigido o caminho de importação para o Firestore
 import './App.css';
 
 function List() {
-    const itens = [
-        { id: 1, nome: 'Item 1', detalhes: 'Detalhes do Item 1' },
-        { id: 2, nome: 'Item 2', detalhes: 'Detalhes do Item 2' },
-        // Adicione mais itens conforme necessário
-      ];
-    
-      return (
-        <div className="lista-cms">
+  const [produtos, setProdutos] = useState([]);
 
-            <h2>Lista de produtos</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Detalhes</th>
+  useEffect(() => {
+    // Função para buscar os produtos do Firestore
+    const fetchProdutos = async () => {
+      try {
+        const snapshot = await firebase.firestore().collection('produtos').get();
+        const produtosData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setProdutos(produtosData);
+      } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
+      }
+    };
+
+    // Chamar a função para buscar os produtos
+    fetchProdutos();
+  }, []);
+
+  return (
+    <div className="lista-cms">
+      <h2>Lista de produtos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Imagem</th>
+          </tr>
+        </thead>
+        <tbody>
+          {produtos.map((produto) => {
+            console.log(produto); // Corrigido o log para dentro do mapeamento dos produtos
+            return (
+              <tr key={produto.id}>
+                <td>{produto.id}</td>
+                <td>{produto.title}</td>
+                <td>{produto.description}</td>
+                <td>{produto.price}</td>
+                <td>{produto.image}</td>
               </tr>
-            </thead>
-            <tbody>
-              {itens.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.nome}</td>
-                  <td>{item.detalhes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      );
-  }
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 export default List;
-
-

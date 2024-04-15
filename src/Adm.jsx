@@ -9,8 +9,6 @@ function Adm() {
 
       <h1 className="title-painel">Painel do Administrador</h1>
 
-      <ProductForm />
-
       <hr />
 
       <List />
