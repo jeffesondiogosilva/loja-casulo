@@ -1,0 +1,25 @@
+.catalog {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .produtos-container {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .produto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    width: 220px !important;
+    margin-bottom: 5%;
+  }
+  
+  .img-produto {
+    width: 200px !important;
+    height: 140px !important;
+    object-fit: cover;
+  }
+  

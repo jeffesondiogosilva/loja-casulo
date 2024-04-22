@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import './App.css';
+import './Home.css';
 
 function Home() {
     const [produtos, setProdutos] = useState([]);
@@ -24,21 +24,24 @@ function Home() {
     }, []);
 
     return (
-        <div className="App">    
+        <div className="App">
             <header className="App-header">
-                <p>Catálogo</p>
+                <h1>Catálogo</h1>
             </header>
 
             <div className="catalog">
-                {produtos.map(produto => (
-                    <div className="produto" key={produto.id}>
-                        <img className="img-produto" src={produto.imageUrl} alt={produto.name} />
-                        <p className='descricao'>{produto.name}</p>
-                        <p className='valor_produto'>R$ {produto.price}</p>
-                    </div>
-                ))}
+                <div className="produtos-container">
+                    {produtos.map(produto => (
+                        <div className="produto" key={produto.id}>
+                            <img className="img-produto" src={produto.imageUrl} alt={produto.name} />
+                            <p className='descricao'>{produto.name}</p>
+                            <p className='valor_produto'>R$ {produto.price}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
+
     );
 }
 

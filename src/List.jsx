@@ -22,6 +22,15 @@ function List() {
     fetchProdutos();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await firebase.firestore().collection('produtos').doc(id).delete();
+      setProdutos(produtos.filter(produto => produto.id !== id)); // Remover o produto da lista local
+    } catch (error) {
+      console.error('Erro ao excluir produto:', error);
+    }
+  };
+
   return (
     <div className="lista-cms">
       <div className=''>
@@ -36,21 +45,23 @@ function List() {
             <th>Descrição</th>
             <th>Preço</th>
             <th>Imagem</th>
+            <th>Ações</th> {/* Adicionando uma coluna para as ações */}
           </tr>
         </thead>
         <tbody>
-          {produtos.map((produto) => {
-            console.log(produto); // Corrigido o log para dentro do mapeamento dos produtos
-            return (
-              <tr key={produto.id}>
-                <td>{produto.id}</td>
-                <td>{produto.title}</td>
-                <td>{produto.description}</td>
-                <td>{produto.price}</td>
-                <td>{produto.image}</td>
-              </tr>
-            );
-          })}
+          {produtos.map((produto) => (
+            <tr key={produto.id}>
+              <td>{produto.id}</td>
+              <td>{produto.title}</td>
+              <td>{produto.description}</td>
+              <td>{produto.price}</td>
+              <td>{produto.image}</td>
+              <td>
+                <button style={{ backgroundColor: 'red' }} onClick={() => handleDelete(produto.id)}>Excluir</button>
+              </td>
+
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
