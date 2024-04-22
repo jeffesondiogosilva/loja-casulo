@@ -24,6 +24,9 @@ function List() {
 
   return (
     <div className="lista-cms">
+      <div className=''>
+        <a href="/product-form" className='bg-success'>Cadastrar Produto</a>
+      </div>
       <h2>Lista de produtos</h2>
       <table>
         <thead>

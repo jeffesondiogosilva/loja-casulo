@@ -50,27 +50,30 @@ function ProductForm() {
     };
 
     return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Nome do Produto:</label>
-                    <input type="text" name="name" value={product.name} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label>Preço:</label>
-                    <input type="number" name="price" value={product.price} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label>Descrição:</label>
-                    <textarea name="description" value={product.description} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label>Imagem do Produto:</label>
-                    <input type="file" name="image" onChange={handleImageChange} />
-                    {product.imageUrl && <img src={product.imageUrl} alt="Preview" style={{ maxWidth: '100%', marginTop: '10px' }} />}
-                </div>
-                <button type="submit">Cadastrar Produto</button>
-            </form>
+        <div>
+            <a href="/adm">Ir para listagem</a>
+            <div className="form-container">                
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>Nome do Produto:</label>
+                        <input type="text" name="name" value={product.name} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label>Preço:</label>
+                        <input type="number" name="price" value={product.price} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label>Descrição:</label>
+                        <textarea name="description" value={product.description} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label>Imagem do Produto:</label>
+                        <input type="file" name="image" onChange={handleImageChange} />
+                        {product.imageUrl && <img src={product.imageUrl} alt="Preview" style={{ maxWidth: '100%', marginTop: '10px' }} />}
+                    </div>
+                    <button type="submit">Cadastrar Produto</button>
+                </form>
+            </div>
         </div>
     );
 }

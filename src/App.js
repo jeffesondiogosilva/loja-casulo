@@ -1,17 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import firebase from 'firebase/compat/app'; // Importe o Firebase
-import 'firebase/compat/firestore'; // Importe o Firestore
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import 'firebase/compat/auth'; // Importe o módulo de autenticação
 import Home from './Home';
 import Adm from './Adm';
-import ProductForm from './ProductForm'; // Importe o componente ProductForm
-import 'firebase/compat/storage'; // Importe o Storage
+import ProductForm from './ProductForm';
+import Login from './Login'; 
 
-
-
-// Configurações do Firebase
+/// Configurações do Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBYbBJj2n6OagdytHaMdiKPW1_VURUHMPI",
   authDomain: "loja-casulo.firebaseapp.com",
@@ -23,13 +19,10 @@ const firebaseConfig = {
   measurementId: "G-KZVTJ7TXNM"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const app = firebase.initializeApp(firebaseConfig);
 
-
-// Inicialize o Firebase
-firebase.initializeApp(firebaseConfig);
+// Exporte a instância do Firebase para que outros componentes possam acessá-la
+export const firebaseApp = app;
 
 function App() {
   return (
@@ -37,7 +30,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/adm" element={<Adm />} />
-        <Route path="/product-form" element={<ProductForm firebase={firebase} />} /> {/* Passe a instância do Firebase como propriedade para ProductForm */}
+        <Route path="/product-form" element={<ProductForm />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
