@@ -18,7 +18,7 @@
   }
   
   .img-produto {
-    width: 200px !important;
+    max-width: 200px !important;
     height: 140px !important;
     object-fit: cover;
   }
