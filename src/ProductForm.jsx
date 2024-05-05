@@ -20,7 +20,9 @@ function ProductForm() {
 
     const handleImageChange = (e) => {
         const imageFile = e.target.files[0];
+        console.log(imageFile);
         const storageRef = firebase.storage().ref().child(`images/${imageFile.name}`);
+        console.log(storageRef);
         storageRef.put(imageFile).then((snapshot) => {
             snapshot.ref.getDownloadURL().then((downloadURL) => {
                 setProduct({
