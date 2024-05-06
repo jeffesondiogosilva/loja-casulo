@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import './Home.css';
+import logo from './storage/img/WhatsApp_Image_2023-12-24_at_15.19.50-removebg-preview.png'
+
 
 function Home() {
     const [produtos, setProdutos] = useState([]);
@@ -26,6 +28,7 @@ function Home() {
     return (
         <div className="App">
             <header className="App-header">
+                <img src={logo} alt="" />
                 <h1>Catálogo</h1>
             </header>
 
