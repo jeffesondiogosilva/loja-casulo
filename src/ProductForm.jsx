@@ -9,8 +9,8 @@ function ProductForm() {
         name: '',
         price: '',
         description: '',
-        imageUrl: '', // Renomeado de 'image' para 'imageUrl'
-        image: '' // Adicionado campo para armazenar o caminho da imagem
+        imageUrl: '',
+        image: ''
     });
 
     const handleChange = (e) => {
@@ -18,20 +18,22 @@ function ProductForm() {
         setProduct({ ...product, [name]: value });
     };
 
-    const handleImageChange = (e) => {
+    const handleImageChange = async (e) => {
         const imageFile = e.target.files[0];
-        console.log(imageFile);
+        if (!imageFile) return;
+
         const storageRef = firebase.storage().ref().child(`images/${imageFile.name}`);
-        console.log(storageRef);
-        storageRef.put(imageFile).then((snapshot) => {
-            snapshot.ref.getDownloadURL().then((downloadURL) => {
-                setProduct({
-                    ...product,
-                    imageUrl: downloadURL,
-                    image: snapshot.ref.fullPath // Armazenar o caminho da imagem
-                });
+        try {
+            const snapshot = await storageRef.put(imageFile);
+            const downloadURL = await snapshot.ref.getDownloadURL();
+            setProduct({
+                ...product,
+                imageUrl: downloadURL,
+                image: snapshot.ref.fullPath
             });
-        });
+        } catch (error) {
+            console.error('Erro ao fazer upload da imagem:', error);
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -44,7 +46,7 @@ function ProductForm() {
                 price: '',
                 description: '',
                 imageUrl: '',
-                image: '' // Limpar o caminho da imagem após o envio
+                image: ''
             });
         } catch (error) {
             console.error('Erro ao cadastrar produto:', error);
