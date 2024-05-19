@@ -1,25 +1,45 @@
 .catalog {
-    /* display: flex; */
-    justify-content: center;
-  }
-  
+  /* display: flex; */
+  justify-content: center;
+  text-align: center;
+}
+
+.produtos-container {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.produto {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  width: 220px !important;
+  margin-bottom: 5%;
+}
+
+.img-produto {
+  max-width: 200px !important;
+  height: 140px !important;
+  object-fit: cover;
+}
+
+/* Media query para telas menores (celulares) */
+@media (max-width: 600px) {
   .produtos-container {
-    display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
+  .logo{
+    width: 70%;
+  }
+
   .produto {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    width: 220px !important;
-    margin-bottom: 5%;
+    width: 90%;
   }
-  
-  .img-produto {
-    max-width: 200px !important;
-    height: 140px !important;
-    object-fit: cover;
+
+  .App-header h1 {
+    font-size: 1.5em;
   }
-  
+}

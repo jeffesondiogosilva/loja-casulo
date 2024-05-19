@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import './Adm.css';
 import ProductForm from './ProductForm';
 import List from './List';
 import firebase from 'firebase/compat/app';

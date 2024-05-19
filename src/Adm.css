@@ -1,0 +1,9 @@
+.btn-lista {
+    background-color: rgb(183, 38, 185);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }

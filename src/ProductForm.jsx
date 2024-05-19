@@ -84,7 +84,8 @@ function ProductForm() {
 
     return (
         <div>
-            <a href="#lista">Ir para listagem</a>
+            <a className='btn-lista' href="#lista">Ir para listagem</a>
+            <h2>Cadastro de produtos</h2>
             {user ? (
                 <div id='form-prod'>
                     <div className="form-container">                
