@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import './Adm.css';
 import ProductForm from './ProductForm';
 import List from './List';
@@ -40,8 +39,10 @@ function Adm() {
       {user ? (
         <div className="painel-adm">
           <h1 className="title-painel">Painel do Administrador</h1>
-          <button onClick={handleLogout}>Logout</button>
-          <hr />
+          <button className='btn-logout' onClick={handleLogout}>Logout</button>
+          <div className='div-btn-portal'>
+            <a className='btn-portal' href="/">Portal</a>
+          </div>
           <ProductForm />
           <List />
         </div>

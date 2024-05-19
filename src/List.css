@@ -1,5 +1,5 @@
 .lista-cms {
-    padding: 20px;
+    
 }
 
 .table-container {
@@ -39,6 +39,9 @@ th {
 
 .delete-button:hover {
     background-color: darkred;
+}
+.lista{
+    
 }
 
 /* Media query para telas menores (celulares) */

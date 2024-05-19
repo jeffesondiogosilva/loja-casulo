@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/compat/app'; // Corrigido o caminho de importação para o Firebase
 import 'firebase/compat/firestore'; // Corrigido o caminho de importação para o Firestore
-import './App.css';
 import './List.css';
 
 function List() {
@@ -33,7 +32,7 @@ function List() {
   };
 
   return (
-    <div id='lista' className="lista-cms">
+    <div id='lista' className="lista">
       <div className=''>
         {/* <a href="#form-prod" className='bg-success'>Cadastrar Produto</a> */}
       </div>
