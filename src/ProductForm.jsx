@@ -28,6 +28,11 @@ function ProductForm() {
     };
 
     const handleImageChange = async (e) => {
+        if (!user) {
+            console.error('Usuário não autenticado');
+            return;
+        }
+
         const imageFile = e.target.files[0];
         if (!imageFile) return;
 
@@ -51,6 +56,7 @@ function ProductForm() {
             console.error('Usuário não autenticado');
             return;
         }
+
         try {
             await firebase.firestore().collection('produtos').add(product);
             console.log('Produto cadastrado com sucesso!');
@@ -76,21 +82,11 @@ function ProductForm() {
         }
     };
 
-    const handleLogout = async () => {
-        try {
-            await firebase.auth().signOut();
-            setUser(null);
-        } catch (error) {
-            console.error('Erro ao fazer logout:', error);
-        }
-    };
-
     return (
         <div>
-            <a href="/adm">Ir para listagem</a>
+            <a href="#lista">Ir para listagem</a>
             {user ? (
-                <div>
-                    <button onClick={handleLogout}>Logout</button>
+                <div id='form-prod'>
                     <div className="form-container">                
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
@@ -115,7 +111,10 @@ function ProductForm() {
                     </div>
                 </div>
             ) : (
-                <button onClick={handleLogin}>Login</button>
+                <div>
+                    <h2>Você precisa estar autenticado para cadastrar um produto</h2>
+                    <button onClick={handleLogin}>Login</button>
+                </div>
             )}
         </div>
     );

@@ -32,9 +32,9 @@ function List() {
   };
 
   return (
-    <div className="lista-cms">
+    <div id='lista' className="lista-cms">
       <div className=''>
-        <a href="/product-form" className='bg-success'>Cadastrar Produto</a>
+        <a href="#form-prod" className='bg-success'>Cadastrar Produto</a>
       </div>
       <h2>Lista de produtos</h2>
       <table>
@@ -52,7 +52,7 @@ function List() {
           {produtos.map((produto) => (
             <tr key={produto.id}>
               <td>{produto.id}</td>
-              <td>{produto.title}</td>
+              <td>{produto.name}</td>
               <td>{produto.description}</td>
               <td>{produto.price}</td>
               <td>{produto.image}</td>
