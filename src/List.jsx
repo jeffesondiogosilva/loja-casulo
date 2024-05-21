@@ -55,7 +55,10 @@ function List() {
               <td>{produto.name}</td>
               <td>{produto.description}</td>
               <td>{produto.price}</td>
-              <td>{produto.image}</td>
+              <td>
+                <img src={produto.imageUrl} alt="" className='thumbnail' />
+                {produto.image}
+              </td>
               <td>
                 <button style={{ backgroundColor: 'red' }} onClick={() => handleDelete(produto.id)}>Excluir</button>
               </td>
