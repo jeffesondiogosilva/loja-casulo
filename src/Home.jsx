@@ -21,7 +21,7 @@ function Home() {
             if (direction === 'next' && lastDoc) {
                 query = query.startAfter(lastDoc);
             } else if (direction === 'prev' && firstDoc) {
-                query = query.endBefore(firstDoc);
+                query = query.endBefore(firstDoc).limitToLast(PRODUCTS_PER_PAGE);
             }
 
             const snapshot = await query.get();
@@ -30,11 +30,19 @@ function Home() {
                 ...doc.data()
             }));
 
+            if (direction === 'next') {
+                setFirstDoc(snapshot.docs[0]);
+                setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
+                setHasMore(snapshot.docs.length === PRODUCTS_PER_PAGE);
+                setHasPrev(true);
+            } else if (direction === 'prev') {
+                setFirstDoc(snapshot.docs[0]);
+                setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
+                setHasMore(true);
+                setHasPrev(snapshot.docs.length === PRODUCTS_PER_PAGE);
+            }
+
             setProdutos(produtosData);
-            setFirstDoc(snapshot.docs[0]);
-            setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
-            setHasMore(snapshot.docs.length === PRODUCTS_PER_PAGE);
-            setHasPrev(direction === 'next' || produtos.length > PRODUCTS_PER_PAGE);
         } catch (error) {
             console.error('Erro ao buscar produtos:', error);
         }
@@ -62,7 +70,7 @@ function Home() {
             </header>
 
             <div className="catalog">
-                <div className="produtos-container ">
+                <div className="produtos-container">
                     {produtos.map(produto => (
                         <div className="produto" key={produto.id}>
                             <img
@@ -75,16 +83,21 @@ function Home() {
                             <p className='valor_produto'>R$ {produto.price}</p>
                         </div>
                     ))}
-
-
                 </div>
                 <div className='d-flex justify-content-center'>
-
                     <div className="pagination">
-                        <button style={{ backgroundColor: '#fff', color: '#000' }} onClick={() => fetchProdutos('prev')} disabled={!hasPrev}>
+                        <button 
+                            style={{ backgroundColor: '#fff', color: '#000' }} 
+                            onClick={() => fetchProdutos('prev')} 
+                            disabled={!hasPrev}
+                        >
                             Anterior
                         </button>
-                        <button style={{ backgroundColor: '#fff', color: '#000', marginLeft: '3px' }} onClick={() => fetchProdutos('next')} disabled={!hasPrev}>
+                        <button 
+                            style={{ backgroundColor: '#fff', color: '#000', marginLeft: '3px' }} 
+                            onClick={() => fetchProdutos('next')} 
+                            disabled={!hasMore}
+                        >
                             Próximo
                         </button>
                     </div>
